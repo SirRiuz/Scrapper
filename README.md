@@ -8,5 +8,5 @@ Para ejecutar Scrapper solo nesecitas del siguiente comando
 </br>
 
 ```
-python3 scrapper.py <"url de la pagina">
+python3 mai.py <"url de la pagina">
 ```
