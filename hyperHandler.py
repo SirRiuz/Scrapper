@@ -23,7 +23,7 @@ class Hyper():
         self.fileObject = open('hyper.link','a')
         self.fileObject.write(item + '\n')
         self.fileObject.close()
-        print('[i] Se añadio una url al carchivo:' , item)
+        print('[i] Se añadio una url al carchivo:' , item , '\n')
 
 
 #Hyper().addItem("Mayeo")

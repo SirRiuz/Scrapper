@@ -6,28 +6,32 @@ from hyperHandler import Hyper
 import requests
 
 
-
 class Request():
 
     def onRequest(self):
+        urlRequest = Hyper().getItem()
+        minUrl = urlRequest[:80] + '...'
         try:
-            urlRequest = Hyper().getItem()
+            #print('[I] Conectando a > "{url}"'.format(url=urlRequest))
 
             if urlRequest != '':
+                print('[I] Conectando con => "{url}"'.format(url=minUrl))
                 response = requests.get(urlRequest) 
-                print('[I] Conectando a > "{url}"'.format(url=urlRequest))
+
                 if response.status_code == 200:
-                    print('Ok reques')
+                    print('\n  [✔] 200 {url}'.format(url=minUrl))
+                    print('  [I] Analizando HTML\n')
         
                 else:
-                    print('[E] Request error > {e}'.format(e=request.status_code))
+                    print('[✖] {code} {url} \n'.format(code=status_code , url=minUrl))
+                    #print('[E] Request error => {e}'.format(e=request.status_code))
 
             else:
-                print('[E] Ya no hay url en el directorio hyper.link')
+                print('\n[E] Ya no hay url en el directorio hyper.link')
                 exit()
 
         except Exception:
-            print('[E] A ocurrido un error ...')
+            print('\n  [E] A ocurrido un error al conectar con > {url}'.format(url=minUrl))
 
         self.onRequest()
 
