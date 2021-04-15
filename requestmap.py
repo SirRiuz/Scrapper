@@ -2,6 +2,7 @@
 
 # Libs
 
+from bscraper import Bs
 from hyperHandler import Hyper
 import requests
 
@@ -15,12 +16,12 @@ class Request():
             #print('[I] Conectando a > "{url}"'.format(url=urlRequest))
 
             if urlRequest != '':
-                print('[I] Conectando con => "{url}"'.format(url=minUrl))
+                print('\n\n[I] Conectando con => "{url}"'.format(url=minUrl))
                 response = requests.get(urlRequest) 
 
                 if response.status_code == 200:
                     print('\n  [✔] 200 {url}'.format(url=minUrl))
-                    print('  [I] Analizando HTML\n')
+                    Bs(response)
         
                 else:
                     print('[✖] {code} {url} \n'.format(code=status_code , url=minUrl))
@@ -34,8 +35,6 @@ class Request():
             print('\n  [E] A ocurrido un error al conectar con > {url}'.format(url=minUrl))
 
         self.onRequest()
-
-
 
 #Request().onRequest()
 
